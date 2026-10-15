@@ -5,7 +5,12 @@ $_p = periode_aktif();
 $_cur = basename($_SERVER['SCRIPT_NAME']);
 
 // [url, label, ikon, daftar file yang menandai menu ini sedang aktif]
-$_menu = [['index.php', 'Beranda', 'fa-house', ['index.php']]];
+$_menu = [
+    ['index.php', 'Beranda', 'fa-house', ['index.php']],
+    ['nilai.php', 'Input Nilai', 'fa-pen-to-square', ['nilai.php', 'nilai_input.php']],
+    ['ketidakhadiran.php', 'Ketidakhadiran', 'fa-user-clock', ['ketidakhadiran.php']],
+    ['cetak.php', 'Cetak Rapor', 'fa-print', ['cetak.php', 'cetak_rapor.php']],
+];
 if ($_u['role'] === 'admin') {
     $_menu[] = ['admin/periode.php', 'Kelola Periode', 'fa-calendar-days', ['periode.php']];
     $_menu[] = ['admin/guru.php', 'Kelola Guru', 'fa-chalkboard-user', ['guru.php', 'guru_form.php', 'guru_import.php']];

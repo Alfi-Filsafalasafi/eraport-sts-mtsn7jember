@@ -39,8 +39,13 @@ require __DIR__ . '/app/partials/header.php';
 <div class="bg-white border border-gray-200 rounded-lg overflow-x-auto">
   <table class="w-full text-sm">
     <thead class="bg-green-50 text-green-900 text-left">
-      <tr><th class="px-4 py-2 font-medium">Kelas</th><th class="px-4 py-2 font-medium">Wali kelas</th>
-          <th class="px-4 py-2 font-medium">Siswa</th><th class="px-4 py-2 font-medium">Status rapor</th></tr>
+      <tr>
+        <th class="px-4 py-2 font-medium">Kelas</th>
+        <th class="px-4 py-2 font-medium">Wali kelas</th>
+        <th class="px-4 py-2 font-medium">Siswa</th>
+        <th class="px-4 py-2 font-medium">Status rapor</th>
+        <th class="px-4 py-2 font-medium text-right">Aksi</th>
+      </tr>
     </thead>
     <tbody class="divide-y divide-gray-100">
     <?php foreach ($kelas as $k): ?>
@@ -55,10 +60,14 @@ require __DIR__ . '/app/partials/header.php';
             <span class="text-gray-500"><i class="fa-regular fa-pen-to-square mr-1"></i>Draft</span>
           <?php endif; ?>
         </td>
+        <td class="px-4 py-2 text-right whitespace-nowrap">
+          <a href="<?= url('nilai.php?kelas=' . (int)$k['id']) ?>" class="text-green-700 hover:underline mr-3">Input nilai</a>
+          <a href="<?= url('ketidakhadiran.php?kelas=' . (int)$k['id']) ?>" class="text-green-700 hover:underline">Ketidakhadiran</a>
+        </td>
       </tr>
     <?php endforeach; ?>
     <?php if (!$kelas): ?>
-      <tr><td colspan="4" class="px-4 py-6 text-center text-gray-500">Belum ada kelas pada periode ini.</td></tr>
+      <tr><td colspan="5" class="px-4 py-6 text-center text-gray-500">Belum ada kelas pada periode ini.</td></tr>
     <?php endif; ?>
     </tbody>
   </table>
